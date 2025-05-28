@@ -1,0 +1,5 @@
+rag-nodejs-api/node_modules
+rag-nodejs-api/build
+rag-nodejs-api/.env.*
+rag-nodejs-api/.env
+
