@@ -1,0 +1,9 @@
+.idea/
+.vscode/
+rag-nodejs-api/node_modules/
+rag-nodejs-api/build/
+rag-nodejs-api/tmp/
+rag-nodejs-api/temp/
+
+rag-nodejs-api/build
+rag-nodejs-api/uploads
