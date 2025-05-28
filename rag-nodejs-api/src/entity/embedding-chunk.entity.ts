@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  JoinColumn,
 } from "typeorm";
 import EmbeddingDocumentEntity from "./embedding-document.entity";
 
@@ -19,8 +20,8 @@ export default class EmbeddingChunkEntity {
   @Column()
   chunkContent: string;
 
-  @Column()
-  chunkEmbedding: string;
+  @Column("float8", { array: true })
+  chunkEmbedding: number[];
 
   @CreateDateColumn()
   createdAt: Date;
@@ -31,5 +32,6 @@ export default class EmbeddingChunkEntity {
   @ManyToOne(() => EmbeddingDocumentEntity, (doc) => doc.chunks, {
     onDelete: "CASCADE",
   })
+  @JoinColumn({ name: "embeddingId" })
   embeddingDocument: EmbeddingDocumentEntity;
 }

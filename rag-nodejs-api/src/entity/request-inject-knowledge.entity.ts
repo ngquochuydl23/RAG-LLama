@@ -10,28 +10,20 @@ import {
 import EmbeddingChunkEntity from "./embedding-chunk.entity";
 import FileEntity from "./file.entity";
 
-@Entity("embedding_documents")
-export default class EmbeddingDocumentEntity {
+@Entity("request_inject_knowledge")
+export default class RequestInjectKnowledgeEntity {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column("uuid")
   fileId: string;
 
-  @Column("jsonb")
-  metadata: Record<string, any>;
+  @Column({ type: Boolean, default: false })
+  added: boolean;
 
   @CreateDateColumn()
   createdAt: Date;
 
   @UpdateDateColumn()
   updatedAt: Date;
-
-  @OneToMany(() => EmbeddingChunkEntity, (chunk) => chunk.embeddingDocument, {
-    cascade: true,
-  })
-  chunks: EmbeddingChunkEntity[];
-
-  @OneToOne(() => FileEntity)
-  file: FileEntity;
 }

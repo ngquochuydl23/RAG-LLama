@@ -12,7 +12,7 @@ export class FileController {
       return res.status(400).json({ message: "No file uploaded" });
     }
     const file = fileRepo.create({
-      fileName: req.file.filename, // saved file name (randomized by multer)
+      fileName: req.file.filename,
       originalName: req.file.originalname,
       size: req.file.size,
       mimetype: req.file.mimetype,
@@ -20,7 +20,6 @@ export class FileController {
     });
 
     await fileRepo.save(file);
-    return file;
   }
 
   async getFile(req: Request, res: Response) {

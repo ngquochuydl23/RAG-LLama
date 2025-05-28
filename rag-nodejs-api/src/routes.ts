@@ -1,5 +1,6 @@
+import { ChatController } from "./controller/chat.controller";
 import { FileController } from "./controller/file.controller";
-import { UserController } from "./controller/UserController";
+import { KnowledgeController } from "./controller/knowledge.controller";
 import { uploadMiddleware } from "./middlewares/upload.middleware";
 
 export const Routes = [
@@ -32,12 +33,24 @@ export const Routes = [
     route: "files/upload",
     controller: FileController,
     action: "uploadFile",
-    middlewares: [uploadMiddleware.single("file")], // multer middleware here
+    middlewares: [uploadMiddleware.single("file")],
   },
   {
     method: "get",
     route: "files/:fileId",
     controller: FileController,
-    action: "getFile"
+    action: "getFile",
+  },
+  {
+    method: "post",
+    route: "knowledge/:fileId/file/add",
+    controller: KnowledgeController,
+    action: "addFile",
+  },
+  {
+    method: "post",
+    route: "chat/completions",
+    controller: ChatController,
+    action: "completions",
   },
 ];
